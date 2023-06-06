@@ -1,13 +1,20 @@
-import './App.css';
-import PropTypes from 'prop-types';
+import "./App.css";
+import PropTypes from "prop-types";
 
 function App() {
-
   const name = <h1>Sudarshan</h1>;
 
   const age = 25;
 
   const isGreen = false;
+
+  const names = ["Sudarshan", "Stark", "Peter", "Mohit", "Aman"];
+
+  const users = [
+    { name: "Sudarshan", age: 25 },
+    { name: "Badal", age: 26 },
+    { name: "Amish", age: 27 },
+  ];
 
   return (
     <div>
@@ -17,9 +24,25 @@ function App() {
       <User name="Henry Cavil" age={40} email="henrycavil@gmail.com" />
 
       {/* Conditional rendering */}
-      {age >= 18 ? <h1 style={{color: isGreen ? "green" : "red"}}>Eligible to Vote</h1> : <h1>You are not an Adult</h1>}
+      {age >= 18 ? (
+        <h1 style={{ color: isGreen ? "green" : "red" }}>Eligible to Vote</h1>
+      ) : (
+        <h1>You are not an Adult</h1>
+      )}
+
+      {names.map((name, key) => {
+        return <h1 key={key}>{name}</h1>;
+      })}
+
+      {users.map((user, key) => {
+        return (
+          <h1 key={key}>
+            <User name={user.name} age={user.age} email={"no-reply@email.com"}/>
+          </h1>
+        );
+      })}
     </div>
-  )
+  );
 }
 
 const User = (props) => {
@@ -29,14 +52,14 @@ const User = (props) => {
       <h2>Age : {props.age}</h2>
       <h2>Email : {props.email}</h2>
     </div>
-  )
-}
+  );
+};
 
 // validation for props field in User component
 User.propTypes = {
-  name : PropTypes.string,
-  age : PropTypes.number,
-  email : PropTypes.string
-}
+  name: PropTypes.string,
+  age: PropTypes.number,
+  email: PropTypes.string,
+};
 
-export default App
+export default App;
