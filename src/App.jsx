@@ -7,6 +7,8 @@ function App() {
 
   const age = 25;
 
+  const isGreen = false;
+
   return (
     <div>
       <h1>Hello World</h1>
@@ -15,7 +17,7 @@ function App() {
       <User name="Henry Cavil" age={40} email="henrycavil@gmail.com" />
 
       {/* Conditional rendering */}
-      {age >= 18 ? <h1>Eligible to Vote</h1> : <h1>You are not an Adult</h1>}
+      {age >= 18 ? <h1 style={{color: isGreen ? "green" : "red"}}>Eligible to Vote</h1> : <h1>You are not an Adult</h1>}
     </div>
   )
 }
